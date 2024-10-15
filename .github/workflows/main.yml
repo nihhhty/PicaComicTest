@@ -16,7 +16,7 @@ jobs:
     - run: flutter build ios --release --no-codesign
     - run: |
         mkdir -p /Users/runner/work/PicaComic/PicaComic/build/ios/iphoneos/Payload
-        cd /Users/runner/work/PicaComic/PicaComic/build/ios/
+        cd /Users/runner/work/PicaComic/PicaComic/build/ios/iphoneos
         pwd
         ls
         zip -r app-ios.ipa iphoneos
