@@ -11,7 +11,7 @@ A comic app with multiple sources built with flutter. forked by wgh136 的项目
 
 1. Clone the repository
 ```shell
-git clone https://github.com/wgh136/PicaComic
+git clone https://github.com/nihhhty/PicaComicTest
 ```
 2. Install flutter: https://docs.flutter.dev/get-started/install
 3. Build Application: https://docs.flutter.dev/deployment
