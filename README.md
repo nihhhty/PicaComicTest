@@ -5,7 +5,7 @@
 [![Download](https://img.shields.io/github/v/release/wgh136/PicaComic)](https://github.com/wgh136/PicaComic/releases)
 [![stars](https://img.shields.io/github/stars/wgh136/PicaComic)](https://github.com/wgh136/PicaComic/stargazers)
 
-A comic app with multiple sources built with flutter.
+A comic app with multiple sources built with flutter. forked by wgh136 的项目,仅供学习使用
 
 ## How to use
 
