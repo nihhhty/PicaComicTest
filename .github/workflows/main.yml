@@ -17,6 +17,7 @@ jobs:
     - run: |
         mkdir -p /Users/runner/work/PicaComic/PicaComic/build/ios/iphoneos/Payload
         cd /Users/runner/work/PicaComic/PicaComic/build/ios/
+        pwd
         zip -r app-ios.ipa iphoneos
     - uses: actions/upload-artifact@v4
       with:
