@@ -2,6 +2,9 @@ name: Build IOS
 run-name: Build IOS
 on:
   workflow_dispatch: {}
+  push:
+    tags:
+      - 'v*.*.*'  # 仅在带有版本标签的推送时触发
 jobs:
   Build_IOS:
     runs-on: macos-13
@@ -23,15 +26,24 @@ jobs:
       with:
         name: app-ios.ipa
         path: /Users/runner/work/PicaComicTest/PicaComicTest/build/ios/iphoneos/app-ios.ipa
-    - uses: actions/create-release@v1
+    - name: Get tag name
+      id: tag
+      run: echo "TAG_NAME=$(echo ${GITHUB_REF} | sed -e 's|^refs/tags/||')" >> $GITHUB_ENV
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ steps.tag.outputs.TAG_NAME }}
-        release_name: Release ${{ steps.tag.outputs.TAG_NAME }}
+        tag_name: ${{ env.TAG_NAME }}
+        release_name: Release ${{ env.TAG_NAME }}
         draft: false
         prerelease: false
-    - uses: actions/upload-release-asset@v1
+
+    - name: Upload IPA to Release
+      id: upload_release_asset
+      uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
