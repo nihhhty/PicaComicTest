@@ -16,9 +16,10 @@ jobs:
     - run: flutter build ios --release --no-codesign
     - run: |
         mkdir -p /Users/runner/work/PicaComic/PicaComic/build/ios/iphoneos/Payload
-        cd /Users/runner/work/PicaComic/PicaComic/build/ios
-        pwd
-        zip -r app-ios.ipa iphoneos
+        cd /Users/runner/work/PicaComic/PicaComic/build/ios/iphoneos
+        cp build/ios/iphoneos/Runner.app Payload/
+        cd Payload
+        zip -r ../app-ios.ipa .
     - uses: actions/upload-artifact@v4
       with:
         name: app-ios.ipa
