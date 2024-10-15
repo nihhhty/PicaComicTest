@@ -16,12 +16,9 @@ jobs:
     - run: flutter build ios --release --no-codesign
     - run: |
         mkdir -p /Users/runner/work/PicaComicTest/PicaComicTest/build/ios/iphoneos/Payload
-        cd /Users/runner/work/PicaComicTest/PicaComicTest/
-        pwd
-        ls -R build/ios/iphoneos/
-        cp -r build/ios/iphoneos/Runner.app /Users/runner/work/PicaComicTest/PicaComicTest/build/ios/iphoneos/Payload/
-        cd /Users/runner/work/PicaComicTest/PicaComicTest/build/ios/iphoneos/Payload
-        zip -r ../app-ios.ipa .
+        mv /Users/runner/work/PicaComicTest/PicaComicTest/build/ios/iphoneos/Runner.app /Users/runner/work/PicaComicTest/PicaComicTest/build/ios/iphoneos/Payload
+        cd /Users/runner/work/PicaComicTest/PicaComicTest/build/ios/iphoneos/
+        zip -r app-ios.ipa Payload
     - uses: actions/upload-artifact@v4
       with:
         name: app-ios.ipa
