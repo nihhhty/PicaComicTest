@@ -23,3 +23,19 @@ jobs:
       with:
         name: app-ios.ipa
         path: /Users/runner/work/PicaComicTest/PicaComicTest/build/ios/iphoneos/app-ios.ipa
+    - uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.tag.outputs.TAG_NAME }}
+        release_name: Release ${{ steps.tag.outputs.TAG_NAME }}
+        draft: false
+        prerelease: false
+    - uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./app-ios.ipa
+        asset_name: app-ios.ipa
+        asset_content_type: application/octet-stream
