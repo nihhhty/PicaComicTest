@@ -17,6 +17,7 @@ jobs:
     - run: |
         mkdir -p /Users/runner/work/PicaComic/PicaComic/build/ios/iphoneos/Payload
         cd /Users/runner/work/PicaComic/PicaComic/build/ios/iphoneos
+        ls -R build/ios/iphoneos/
         cp build/ios/iphoneos/Runner.app Payload/
         cd Payload
         zip -r ../app-ios.ipa .
